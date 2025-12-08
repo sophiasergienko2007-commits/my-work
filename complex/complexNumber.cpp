@@ -48,7 +48,7 @@ int main() {
     cout << "Введіть кількість комплексних чисел: ";
     cin >> n;
 
-    Complex arr[50]; // виділений масив на 50 елементів
+    Complex arr[n]; // виділений масив на 50 елементів
 
     cout << "Введіть числа у форматі: Re Im\n";
     for (int i = 0; i < n; i++) {
@@ -68,15 +68,12 @@ int main() {
     average.im = sum.im / n;
 
     // 3) Добуток елементів, дійсна частина яких > за дійсну частину останнього елемента
-    Complex product = {1, 0};
+    Complex product = {1, 1};
     Complex last = arr[n - 1];
-
-    bool found = false;
 
     for (int i = 0; i < n; i++) {
         if (arr[i].re > last.re) {
             product = mul(product, arr[i]);
-            found = true;
         }
     }
 
@@ -87,12 +84,10 @@ int main() {
     cout << "\nСереднє арифметичне: ";
     printComplex(average);
 
-    if (found) {
-        cout << "\nДобуток елементів з більшою дійсною частиною: ";
-        printComplex(product);
-    } else {
-        cout << "\nНемає елементів з дійсною частиною більшою за дійсну частину останнього.";
-    }
+   
+     cout << "\nДобуток елементів з більшою дійсною частиною: ";
+    printComplex(product);
+   
 
     cout << endl;
 
