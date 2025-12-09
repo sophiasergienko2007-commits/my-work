@@ -6,10 +6,20 @@ struct Complex
 {
     double re; // дійсна частина
     double im; // уявна частина
+
+    Complex()
+    {
+        re = 0;
+        im = 0;
+    }
+    Complex(double r, double i)
+    {
+        re = r;
+        im = i;
+    }
 };
 
-// Функції для арифметичних операцій
-//перевантаження операторів
+// Функції перевантаження арифметичних операторів для комплексних чисел
 Complex operator+(Complex a, Complex b)
 {
     Complex c;
@@ -63,8 +73,8 @@ int main()
     cout << "Введіть кількість комплексних чисел: ";
     cin >> n;
 
-    Complex arr[n]; 
-   
+    Complex arr[n];
+
     for (int i = 0; i < n; i++)
     {
         cout << "Число " << i + 1 << ": ";
