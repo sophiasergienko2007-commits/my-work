@@ -59,18 +59,22 @@ int main() {
     cout << endl;
 
     string input;
-    do //do - цикл, який виконує тіло один раз, а потім перевіряє умову 
+
+    while (true) 
     {
         cout << "Введіть породу собаки: ";
         cin >> input;
 
-        if (!isBreedInArray(dogs, n, input)) 
+        if (isBreedInArray(dogs, n, input)) 
+        {
+            cout << "Порода знайдена!";
+            break;
+        } 
+        else 
         {
             cout << "Такої породи в масиві немає. Спробуйте ще раз.\n";
         }
-    } while (!isBreedInArray(dogs, n, input));
-
-    cout << "Порода знайдена!";
+    }
 
     return 0;
 }
