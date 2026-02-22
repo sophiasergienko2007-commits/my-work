@@ -106,7 +106,7 @@ public:
     friend istream& operator>>(istream& is, Sklad& s) {
         cout << "Номер складу: "; is >> s.number;
         cout << "Адреса: "; is >> s.address;
-        cout << "Кількість товарів:/n "; is >> s.count;
+        cout << "Кількість товарів: "; is >> s.count;
 
         delete[] s.tovary; 
         s.tovary = new Tovar[s.count];
@@ -142,9 +142,43 @@ int main() {
     Sklad number1, number2;
 
     cout << "Введіть дані для першого складу:\n";
-    cin >> number1;
+    int n, c;
+    string addr;
+
+    cout << "Номер складу: "; cin >> n;
+    number1.setNumber(n);
+
+    cout << "Адреса: "; cin >> addr;
+    number1.setAddress(addr);
+
+    cout << "Кількість товарів: "; cin >> c;
+    number1.setCount(c); 
+
+    //заповнення товарів через оператор індексування та сетери класу Tovar
+    for (int i = 0; i < number1.getCount(); i++) {
+        string tName;
+        cout << "  Назва товару " << i + 1 << ": ";
+        cin >> tName;
+        number1[i].setName(tName); 
+    }
+
+   
     cout << "\nВведіть дані для другого складу:\n";
-    cin >> number2;
+    cout << "Номер складу: "; cin >> n;
+    number2.setNumber(n);
+
+    cout << "Адреса: "; cin >> addr;
+    number2.setAddress(addr);
+
+    cout << "Кількість товарів: "; cin >> c;
+    number2.setCount(c);
+
+    for (int i = 0; i < number2.getCount(); i++) {
+        string tName;
+        cout << "  Назва товару " << i + 1 << ": ";
+        cin >> tName;
+        number2[i].setName(tName);
+    }
 
     //сортування за адресою 
     cout << "\n--- Склади в алфавітному порядку адрес ---\n";
@@ -175,6 +209,7 @@ int main() {
     s_copy.showTovary();
 
     return 0;
+   
 }
 
 
